@@ -104,8 +104,8 @@ def do_login():
 @view('admin') 
 def admin():
     cookie = request.get_cookie('admin')
-    authenticate_cookie=verify(cookie)
-    if cookie == None or authenticate_cookie==False:
+    auth_cookie=verify(cookie)
+    if cookie == None or authe_cookie==False:
         redirect('/login')
     else:
         msgs = Message.select().where(Message.is_approved==False) 
@@ -116,8 +116,8 @@ def admin():
 @post('/admin')
 def do_admin():
     cookie = request.get_cookie('admin')
-    authenticate_cookie=verify(cookie)
-    if cookie == None or authenticate_cookie==False:
+    auth_cookie=verify(cookie)
+    if cookie == None or auth_cookie==False:
         redirect('/login')
     else:
         action = request.forms['action']
